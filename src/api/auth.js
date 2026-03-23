@@ -8,3 +8,8 @@ export const requestPasswordReset = (email) =>
   client.post('/api/auth/password-reset/', { email });
 export const confirmPasswordReset = (token, password) =>
   client.post('/api/auth/password-reset/confirm/', { token, password });
+
+export const uploadAvatar = (formData) =>
+  client.patch('/api/auth/profile/', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
