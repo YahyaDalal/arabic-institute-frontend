@@ -11,6 +11,8 @@ import StudentDashboard from './pages/student/StudentDashboard';
 import TeacherDashboard from './pages/teacher/TeacherDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
 
+import ProfilePage from './pages/profile/ProfilePage';
+
 export default function App() {
   return (
     <AuthProvider>
@@ -36,6 +38,12 @@ export default function App() {
           <Route path="/admin" element={
             <ProtectedRoute allowedRoles={['admin']}>
               <AdminDashboard />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/profile" element={
+            <ProtectedRoute>
+                <ProfilePage />
             </ProtectedRoute>
           } />
 
