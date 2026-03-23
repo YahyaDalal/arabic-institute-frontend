@@ -1,0 +1,1 @@
+export default function ResetPasswordConfirmPage() { return <h1>Confirm Reset</h1>; }
