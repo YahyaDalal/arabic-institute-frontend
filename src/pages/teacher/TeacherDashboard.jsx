@@ -3,10 +3,13 @@ import { useAuth } from '../../context/AuthContext';
 import { getCohorts } from '../../api/courses';
 import { getCohortEnrolments, updateEnrolment } from '../../api/enrolments';
 import { issueCertificate, getAllCertificates } from '../../api/certificates';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function TeacherDashboard() {
   const { user, logoutUser } = useAuth();
   const [cohorts, setCohorts] = useState([]);
+  const navigate = useNavigate();
   const [selectedCohort, setSelectedCohort] = useState(null);
   const [enrolments, setEnrolments] = useState([]);
   const [certificates, setCertificates] = useState([]);
@@ -84,6 +87,7 @@ export default function TeacherDashboard() {
         <h1 style={styles.title}>Teacher Dashboard</h1>
         <div>
           <span style={styles.userInfo}>{user?.email}</span>
+          <button onClick={() => navigate('/profile')} style={styles.profileBtn}>My Profile</button>
           <button onClick={logoutUser} style={styles.logoutBtn}>Logout</button>
         </div>
       </div>
@@ -206,6 +210,7 @@ const styles = {
   title: { margin: 0, color: '#1a1a2e' },
   userInfo: { marginRight: '12px', color: '#666' },
   logoutBtn: { padding: '6px 12px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' },
+  profileBtn: { padding: '6px 12px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', marginRight: '8px' },
   tabs: { display: 'flex', gap: '8px', marginBottom: '24px' },
   tab: { padding: '8px 16px', backgroundColor: '#f0f0f0', border: 'none', borderRadius: '4px', cursor: 'pointer' },
   activeTab: { padding: '8px 16px', backgroundColor: '#1a1a2e', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' },
