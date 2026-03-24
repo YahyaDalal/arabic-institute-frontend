@@ -11,8 +11,13 @@ export default function ResetPasswordConfirmPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('Page loaded. Token from URL:', token);
-    console.log('Full URL:', window.location.href);
+    console.log('⚠️ Page loaded. Token from URL:', token);
+    console.log('⚠️ Full URL:', window.location.href);
+    if (!token) {
+      console.error('❌ NO TOKEN FOUND IN URL');
+    } else {
+      console.log('✅ Token found:', token.substring(0, 20) + '...');
+    }
   }, [token]);
 
   const handleSubmit = async (e) => {
