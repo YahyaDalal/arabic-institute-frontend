@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams, Link } from 'react-router-dom';
 import { confirmPasswordReset } from '../../api/auth';
 
@@ -9,6 +9,11 @@ export default function ResetPasswordConfirmPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log('Page loaded. Token from URL:', token);
+    console.log('Full URL:', window.location.href);
+  }, [token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
