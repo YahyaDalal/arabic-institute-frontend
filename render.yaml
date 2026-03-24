@@ -1,12 +1,4 @@
-services:
-  - type: web
-    name: arabic-institute-frontend
-    staticPublishPath: ./dist
-
-routes:
-  - type: rewrite
-    source: ^/(?!.*\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|webp)$)
-    destination: /index.html
-  - type: rewrite
-    source: ^(?!^/[^/]*\.[^/]*$|^/static/)
-    destination: /index.html
+redirects:
+  - source: "^(?!.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|webp|map)$).*$"
+    destination: "/index.html"
+    type: rewrite
